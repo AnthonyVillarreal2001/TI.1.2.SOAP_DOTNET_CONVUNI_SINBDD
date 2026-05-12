@@ -1,0 +1,1 @@
+<%@ ServiceHost Language="C#" Debug="true" Service="WS_SOAP_DOTNET_GR69.Services.ConversionService" CodeBehind="ConversionService.cs" %>

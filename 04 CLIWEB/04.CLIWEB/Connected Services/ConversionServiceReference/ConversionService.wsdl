@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ConversionService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:57003/ConversionService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:57003/ConversionService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IConversionService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_MetroAPie_InputMessage">
+    <wsdl:part name="parameters" element="tns:MetroAPie" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_MetroAPie_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MetroAPieResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_KilometroAMilla_InputMessage">
+    <wsdl:part name="parameters" element="tns:KilometroAMilla" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_KilometroAMilla_OutputMessage">
+    <wsdl:part name="parameters" element="tns:KilometroAMillaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_CentimetroAPulgada_InputMessage">
+    <wsdl:part name="parameters" element="tns:CentimetroAPulgada" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_CentimetroAPulgada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CentimetroAPulgadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_PulgadaACentimetro_InputMessage">
+    <wsdl:part name="parameters" element="tns:PulgadaACentimetro" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_PulgadaACentimetro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PulgadaACentimetroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_PieAMetro_InputMessage">
+    <wsdl:part name="parameters" element="tns:PieAMetro" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_PieAMetro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PieAMetroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_KilogramoALibra_InputMessage">
+    <wsdl:part name="parameters" element="tns:KilogramoALibra" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_KilogramoALibra_OutputMessage">
+    <wsdl:part name="parameters" element="tns:KilogramoALibraResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_GramoAOnza_InputMessage">
+    <wsdl:part name="parameters" element="tns:GramoAOnza" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_GramoAOnza_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GramoAOnzaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_ToneladaAKilogramo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ToneladaAKilogramo" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_ToneladaAKilogramo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ToneladaAKilogramoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_LibraAKilogramo_InputMessage">
+    <wsdl:part name="parameters" element="tns:LibraAKilogramo" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_LibraAKilogramo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LibraAKilogramoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_OnzaAGramo_InputMessage">
+    <wsdl:part name="parameters" element="tns:OnzaAGramo" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_OnzaAGramo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OnzaAGramoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_CelsiusAFahrenheit_InputMessage">
+    <wsdl:part name="parameters" element="tns:CelsiusAFahrenheit" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_CelsiusAFahrenheit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CelsiusAFahrenheitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_CelsiusAKelvin_InputMessage">
+    <wsdl:part name="parameters" element="tns:CelsiusAKelvin" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_CelsiusAKelvin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CelsiusAKelvinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_CelsiusARankine_InputMessage">
+    <wsdl:part name="parameters" element="tns:CelsiusARankine" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_CelsiusARankine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CelsiusARankineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_CelsiusAReaumur_InputMessage">
+    <wsdl:part name="parameters" element="tns:CelsiusAReaumur" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_CelsiusAReaumur_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CelsiusAReaumurResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_FahrenheitACelsius_InputMessage">
+    <wsdl:part name="parameters" element="tns:FahrenheitACelsius" />
+  </wsdl:message>
+  <wsdl:message name="IConversionService_FahrenheitACelsius_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FahrenheitACelsiusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IConversionService">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/Login" message="tns:IConversionService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/LoginResponse" message="tns:IConversionService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MetroAPie">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/MetroAPie" message="tns:IConversionService_MetroAPie_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/MetroAPieResponse" message="tns:IConversionService_MetroAPie_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KilometroAMilla">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/KilometroAMilla" message="tns:IConversionService_KilometroAMilla_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/KilometroAMillaResponse" message="tns:IConversionService_KilometroAMilla_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CentimetroAPulgada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/CentimetroAPulgada" message="tns:IConversionService_CentimetroAPulgada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/CentimetroAPulgadaResponse" message="tns:IConversionService_CentimetroAPulgada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PulgadaACentimetro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/PulgadaACentimetro" message="tns:IConversionService_PulgadaACentimetro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/PulgadaACentimetroResponse" message="tns:IConversionService_PulgadaACentimetro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PieAMetro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/PieAMetro" message="tns:IConversionService_PieAMetro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/PieAMetroResponse" message="tns:IConversionService_PieAMetro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KilogramoALibra">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/KilogramoALibra" message="tns:IConversionService_KilogramoALibra_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/KilogramoALibraResponse" message="tns:IConversionService_KilogramoALibra_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GramoAOnza">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/GramoAOnza" message="tns:IConversionService_GramoAOnza_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/GramoAOnzaResponse" message="tns:IConversionService_GramoAOnza_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ToneladaAKilogramo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/ToneladaAKilogramo" message="tns:IConversionService_ToneladaAKilogramo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/ToneladaAKilogramoResponse" message="tns:IConversionService_ToneladaAKilogramo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LibraAKilogramo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/LibraAKilogramo" message="tns:IConversionService_LibraAKilogramo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/LibraAKilogramoResponse" message="tns:IConversionService_LibraAKilogramo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnzaAGramo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/OnzaAGramo" message="tns:IConversionService_OnzaAGramo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/OnzaAGramoResponse" message="tns:IConversionService_OnzaAGramo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusAFahrenheit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/CelsiusAFahrenheit" message="tns:IConversionService_CelsiusAFahrenheit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/CelsiusAFahrenheitResponse" message="tns:IConversionService_CelsiusAFahrenheit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusAKelvin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/CelsiusAKelvin" message="tns:IConversionService_CelsiusAKelvin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/CelsiusAKelvinResponse" message="tns:IConversionService_CelsiusAKelvin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusARankine">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/CelsiusARankine" message="tns:IConversionService_CelsiusARankine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/CelsiusARankineResponse" message="tns:IConversionService_CelsiusARankine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusAReaumur">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/CelsiusAReaumur" message="tns:IConversionService_CelsiusAReaumur_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/CelsiusAReaumurResponse" message="tns:IConversionService_CelsiusAReaumur_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FahrenheitACelsius">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConversionService/FahrenheitACelsius" message="tns:IConversionService_FahrenheitACelsius_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConversionService/FahrenheitACelsiusResponse" message="tns:IConversionService_FahrenheitACelsius_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IConversionService" type="tns:IConversionService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MetroAPie">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/MetroAPie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KilometroAMilla">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/KilometroAMilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CentimetroAPulgada">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/CentimetroAPulgada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PulgadaACentimetro">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/PulgadaACentimetro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PieAMetro">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/PieAMetro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KilogramoALibra">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/KilogramoALibra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GramoAOnza">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/GramoAOnza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ToneladaAKilogramo">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/ToneladaAKilogramo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LibraAKilogramo">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/LibraAKilogramo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnzaAGramo">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/OnzaAGramo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusAFahrenheit">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/CelsiusAFahrenheit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusAKelvin">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/CelsiusAKelvin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusARankine">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/CelsiusARankine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusAReaumur">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/CelsiusAReaumur" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FahrenheitACelsius">
+      <soap:operation soapAction="http://tempuri.org/IConversionService/FahrenheitACelsius" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConversionService">
+    <wsdl:port name="BasicHttpBinding_IConversionService" binding="tns:BasicHttpBinding_IConversionService">
+      <soap:address location="http://localhost:57003/ConversionService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

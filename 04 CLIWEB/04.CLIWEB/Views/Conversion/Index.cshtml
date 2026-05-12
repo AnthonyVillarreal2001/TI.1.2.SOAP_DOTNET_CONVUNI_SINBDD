@@ -1,0 +1,337 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Conversión de Unidades";
+}
+
+<style>
+    .converter-wrapper {
+        width: 100%;
+        max-width: 620px;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    /* Header */
+    .header-card {
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 20px;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .header-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #5B2C8E;
+    }
+
+    .btn-logout {
+        background-color: #3B82F6;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s;
+        white-space: nowrap;
+    }
+
+        .btn-logout:hover {
+            background-color: #2563EB;
+        }
+
+    /* Tarjetas */
+    .section-card {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section-header {
+        padding: 14px 20px;
+        font-weight: 700;
+        font-size: 1rem;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .section-body {
+        padding: 20px;
+        background: white;
+    }
+
+    .header-category {
+        background: #3B82F6;
+    }
+
+    .header-type {
+        background: linear-gradient(90deg, #F97316, #EF4444);
+    }
+
+    .header-value {
+        background: linear-gradient(90deg, #10B981, #059669);
+    }
+
+    select, .input-value {
+        width: 100%;
+        padding: 12px 14px;
+        border: 2px solid #D1D5DB;
+        border-radius: 12px;
+        font-size: 1rem;
+        background: #F9FAFB;
+        color: #1E293B;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+
+        select:focus, .input-value:focus {
+            border-color: #14B8A6;
+        }
+
+    .btn-convert {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 14px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: white;
+        background: linear-gradient(90deg, #14B8A6, #0D9488);
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(20,184,166,0.4);
+        transition: all 0.3s;
+        margin-top: 10px;
+    }
+
+        .btn-convert:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(20,184,166,0.5);
+        }
+
+        .btn-convert:active {
+            transform: translateY(0);
+        }
+
+        .btn-convert.loading {
+            background: #14B8A6;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+    .result-card {
+        background: #F0FDFA;
+        border-left: 6px solid #14B8A6;
+        border-radius: 14px;
+        padding: 18px 20px;
+        margin-top: 18px;
+        color: #0F766E;
+    }
+
+        .result-card .result-big {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .result-card .result-detail {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+    .error-box {
+        background: #FEF2F2;
+        border-left: 6px solid #EF4444;
+        color: #B91C1C;
+        padding: 15px 20px;
+        border-radius: 14px;
+        margin-bottom: 10px;
+    }
+
+    .fab-clear {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 56px;
+        height: 56px;
+        background: #F97316;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 1.6rem;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(249, 115, 22, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: transform 0.2s;
+    }
+
+        .fab-clear:hover {
+            transform: scale(1.08);
+        }
+
+    .credits {
+        margin-top: 30px;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.75rem;
+        text-align: center;
+    }
+</style>
+
+<div class="converter-wrapper">
+
+    <!-- Header -->
+    <div class="header-card">
+        <div class="header-title">Conversión de Unidades</div>
+        <a href="@Url.Action("Logout","Account")" class="btn-logout">Cerrar sesión</a>
+    </div>
+
+    <!-- Si hay error -->
+    @if (ViewBag.Error != null)
+    {
+        <div class="error-box">⚠️ @ViewBag.Error</div>
+    }
+
+    <!-- Formulario (siempre visible) -->
+    @using (Html.BeginForm("Index", "Conversion", FormMethod.Post, new { id = "convertForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="type" id="hiddenType" value="1" />
+
+        <!-- 1. Categoría -->
+        <div class="section-card">
+            <div class="section-header header-category">
+                <span>📋</span> Categoría de Conversión
+            </div>
+            <div class="section-body">
+                <select id="categorySelect">
+                    <option value="length">📏 Longitud</option>
+                    <option value="weight">⚖️ Peso</option>
+                    <option value="temp">🌡️ Temperatura</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 2. Tipo de Conversión -->
+        <div class="section-card">
+            <div class="section-header header-type">
+                <span>🔄</span> Tipo de Conversión
+            </div>
+            <div class="section-body">
+                <select id="typeSelect"></select>
+            </div>
+        </div>
+
+        <!-- 3. Valor y resultado -->
+        <div class="section-card">
+            <div class="section-header header-value">
+                <span>✏️</span> Ingrese el Valor
+            </div>
+            <div class="section-body">
+                <input type="text" name="value" id="inputValue" class="input-value"
+                       placeholder="Ingrese el valor numérico" value="@(Request.Form["value"] ?? "")" />
+
+                <button type="submit" class="btn-convert" id="convertBtn">CONVERTIR</button>
+
+                @if (ViewBag.Result != null)
+                {
+                    <div class="result-card">
+                        <div class="result-big">@ViewBag.Result @ViewBag.ToUnit</div>
+                        <div class="result-detail">@ViewBag.InputValue @ViewBag.FromUnit → @ViewBag.Result @ViewBag.ToUnit</div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<!-- FAB limpiar -->
+<button class="fab-clear" title="Limpiar" onclick="clearForm()">🗑️</button>
+
+<div class="credits">👾 Hecho por: Ariel R. y Anthony V.</div>
+
+@section scripts {
+    <script>
+    const mapping = {
+        length: [
+            { text: 'Metros → Pies', value: 1 },
+            { text: 'Kilómetros → Millas', value: 2 },
+            { text: 'Centímetros → Pulgadas', value: 3 },
+            { text: 'Pulgadas → Centímetros', value: 4 },
+            { text: 'Pies → Metros', value: 5 }
+        ],
+        weight: [
+            { text: 'Kilogramos → Libras', value: 6 },
+            { text: 'Gramos → Onzas', value: 7 },
+            { text: 'Toneladas → Kilogramos', value: 8 },
+            { text: 'Libras → Kilogramos', value: 9 },
+            { text: 'Onzas → Gramos', value: 10 }
+        ],
+        temp: [
+            { text: 'Celsius → Fahrenheit', value: 11 },
+            { text: 'Celsius → Kelvin', value: 12 },
+            { text: 'Celsius → Rankine', value: 13 },
+            { text: 'Celsius → Réaumur', value: 14 },
+            { text: 'Fahrenheit → Celsius', value: 15 }
+        ]
+    };
+
+    const categorySelect = document.getElementById('categorySelect');
+    const typeSelect = document.getElementById('typeSelect');
+    const hiddenType = document.getElementById('hiddenType');
+    const form = document.getElementById('convertForm');
+    const btn = document.getElementById('convertBtn');
+
+    function populateTypes(category) {
+        typeSelect.innerHTML = '';
+        mapping[category].forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.value;
+            option.textContent = item.text;
+            typeSelect.appendChild(option);
+        });
+        hiddenType.value = mapping[category][0].value;
+    }
+
+    categorySelect.addEventListener('change', function () {
+        populateTypes(this.value);
+    });
+
+    typeSelect.addEventListener('change', function () {
+        hiddenType.value = this.value;
+    });
+
+    // Inicializar
+    populateTypes('length');
+    // Si hay un valor previo seleccionado (por error), podríamos restaurarlo, pero por simplicidad no.
+
+    // Loading en el botón
+    form.addEventListener('submit', function () {
+        btn.classList.add('loading');
+        btn.textContent = 'CONVIRTIENDO...';
+    });
+
+    function clearForm() {
+        document.getElementById('inputValue').value = '';
+        // Ocultar resultado si existe (requiere recargar sin resultado, o limpiar vía JS)
+        const resultCard = document.querySelector('.result-card');
+        if (resultCard) resultCard.style.display = 'none';
+        // Limpiar también error box
+        const errorBox = document.querySelector('.error-box');
+        if (errorBox) errorBox.style.display = 'none';
+    }
+    </script>
+}

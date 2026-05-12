@@ -1,0 +1,59 @@
+﻿@{
+    Layout = null;
+    var title = ViewBag.Title ?? "Conversor Sullivan";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@title</title>
+    <style>
+        /* === RESET Y BASE === */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', 'Montserrat', 'Poppins', sans-serif;
+        }
+
+        /* Fondo común con la imagen de Sullivan */
+        body {
+            background: url('@Url.Content("~/Content/images/sullivan.jpg")') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Capa oscura opcional para mejorar contraste (muy sutil) */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.2);
+            z-index: 0;
+        }
+
+        .page-content {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Utilidades */
+        .text-center { text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="page-content">
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
